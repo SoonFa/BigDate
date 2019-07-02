@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fivecollege</title>
+</head>
+<script>
+     var co=Array();
+     var number=Array();
+    $(function () {
+        getData();
+    });
+    function getData() {
+        $.ajax({
+            type:"get",
+            dataType:"json",
+            url:"/fivecollege",
+            success:function (data) {
+                for(var i=0;i<data.length;i++){
+                    co[i]=data[i].colloge;
+                    number[i]=data[i].numList;
+                }
+                linechart();
+            }
+        });
+    }
+    function linechart(){
+        var option = {
+            title: {
+                text: '五大学院在校生分析图'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['服装学院','机电学院','电信学院','经管学院','计算机学院']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['2014','2015','2016','2017','2018']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name:'服装学院',
+                    type:'line',
+                    stack: '人数',
+                    data:number[0]
+                },
+                {
+                    name:'机电学院',
+                    type:'line',
+                    stack: '人数',
+                    data:number[1]
+                },
+                {
+                    name:'电信学院',
+                    type:'line',
+                    stack: '人数',
+                    data:number[2]
+                },
+                {
+                    name:'经管学院',
+                    type:'line',
+                    stack: '人数',
+                    data:number[3]
+                },
+                {
+                    name:'计算机学院',
+                    type:'line',
+                    stack: '人数',
+                    data:number[4]
+                }
+            ]
+        };
+
+        var chart_line = echarts.init(document.getElementById('chart_line'));
+        chart_line.setOption(option);
+    }
+</script>
+<body>
+<div >
+    <div id="chart_line" style="width: 80vw;height: 80vh"></div>
+</div>
+</body>
+
+</html>

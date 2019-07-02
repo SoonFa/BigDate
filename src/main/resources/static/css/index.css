@@ -1,0 +1,50 @@
+#left-chart-nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 51px;
+    width: 15vw;
+    background-color: #333;
+    overflow-y: hidden;
+}
+#left-chart-nav li {
+    cursor: pointer;
+    text-align: center;
+    line-height: 54px;
+    height: 54px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    color: #FFF;
+    list-style: none;
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+ul {
+    text-align: center;
+    list-style-type: disc;
+}
+body {
+    background-color: #f3f3f3;
+    color: #666;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+#right {
+    position: relative;
+    left: 15vw;
+    width: 85vw;
+    height: 100vh;
+}
+.active{
+    background: #39a4ff;
+}

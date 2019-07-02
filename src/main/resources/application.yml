@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spark
+   #数据库配置
+  datasource:
+        username: root
+        password: 123456
+        url: jdbc:mysql://localhost:3306/bigdata?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+
+  thymeleaf:
+    cache: false
+    suffix: .html
+    mode: LEGACYHTML5
+    prefix: classpath:/templates/
+    encoding: UTF-8
+
+  resources:
+    static-locations: classpath:/static/
+
+mybatis:
+  # mapper 所对应接口所在位置
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  # MyBatis mapper所对应实体类
+  type-aliases-package: zsx.mycoursera.entity
+  #开启驼峰命名规则
+  configuration:
+      map-underscore-to-camel-case: true
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>collegenumber</title>
+</head>
+<script>
+    var co=Array();
+    var number=Array();
+    $(function () {
+        getData();
+    });
+    function getData() {
+        $.ajax({
+            type:"get",
+            dataType:"json",
+            url:"/collegenumber",
+            success:function (data) {
+                for(var i=0;i<data.length;i++){
+                    co[i]=data[i].college;
+                    number[i]=data[i].value;
+                }
+                columnchart();
+            }
+        });
+    }
+    function columnchart(){
+        var option = {
+            title : {
+                text: '中原工学院学院人数分析图',
+                x:'center',
+            },
+            tooltip:{},
+            legend:{data:[]},
+            xAxis: {
+                data: co
+            },
+            yAxis: {
+            },
+            series: [{
+                name:'人数:',
+                data: number,
+                type: 'bar'
+            }]
+        };
+        var chart_column = echarts.init(document.getElementById('chart_column'));
+        chart_column.setOption(option);
+    }
+</script>
+<body>
+<div >
+    <div id="chart_column" style="width: 80vw;height: 80vh"></div>
+</div>
+</body>
+</html>

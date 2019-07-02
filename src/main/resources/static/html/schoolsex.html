@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>schoolsex</title>
+
+</head>
+<script>
+    $(function () {
+        getData();
+    });
+    function getData() {
+        $.ajax({
+            type:"get",
+            dataType:"json",
+            url:"/schoolsex",
+            success:function (data) {
+                piechart(data);
+            }
+        })
+
+    }
+    function piechart(data){
+        var option = {
+            title : {
+                text: '中原工学院男女比例分布图',
+                subtext: 'From zsx',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['男','女']
+            },
+            series : [
+                {
+                    name: '人数:',
+                    type: 'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data:data,
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        var chart_pie = echarts.init(document.getElementById('chart_pie'));
+        chart_pie.setOption(option);
+
+    }
+</script>
+<body>
+<div >
+    <div id="chart_pie" style="width: 80vw;height: 80vh"></div>
+</div>
+</body>
+
+</html>

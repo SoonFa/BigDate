@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<div id="left-chart-nav" >
+    <ul>
+        <li  id="one">
+             中原工学院男女比例分析
+        </li>
+        <li id="four">
+            五大学院近五年在校生分析
+        </li>
+        <li id="three">
+            中原工学院学院人数分析
+        </li>
+        <li id="two">
+            计算机学院男女比例分析
+        </li>
+        <li id="five">
+            计算机学院各班男女比例分析
+        </li>
+
+    </ul>
+</div>
+
+<div id="right" style="margin-top: 50px">
+</div>
+</body>
+<script>
+        $(' #one').click(function(){
+            $(this).addClass("active");
+            $("#two").removeClass("active");
+            $("#three").removeClass("active");
+            $("#four").removeClass("active");
+            $("#five").removeClass("active");
+            $("#right").load("/html/schoolsex.html");
+        });
+
+        $(' #two').click(function(){
+            $(this).addClass("active");
+            $("#one").removeClass("active");
+            $("#three").removeClass("active");
+            $("#four").removeClass("active");
+            $("#five").removeClass("active");
+            $("#right").load("/html/computersex.html");
+        });
+
+        $(' #three').click(function(){
+            $(this).addClass("active");
+            $("#one").removeClass("active");
+            $("#two").removeClass("active");
+            $("#four").removeClass("active");
+            $("#five").removeClass("active");
+            $("#right").load("/html/collegenumber.html");
+        });
+        $(' #four').click(function(){
+            $(this).addClass("active");
+            $("#one").removeClass("active");
+            $("#two").removeClass("active");
+            $("#three").removeClass("active");
+            $("#five").removeClass("active");
+            $("#right").load("/html/fivecollege.html");
+        })
+        $(' #five').click(function(){
+            $(this).addClass("active");
+            $("#one").removeClass("active");
+            $("#two").removeClass("active");
+            $("#three").removeClass("active");
+            $("#four").removeClass("active");
+            $("#right").load("/html/computernumber.html");
+        })
+</script>
+</html>
